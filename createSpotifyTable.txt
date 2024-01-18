@@ -1,0 +1,67 @@
+create table lecture18_spotifyoriginal(
+	track_id varchar(30),
+    track_name varchar(100),
+    track_artist varchar(100), 
+    track_popularity tinyint,
+    track_album_id varchar(30),
+    track_album_name varchar(100),
+    track_album_release_date text,
+     playlist_name varchar(50),
+     playlist_id varchar(30),
+     playlist_genre varchar(30),
+     playlist_subgenre varchar(30),
+    danceability double,
+    energy double,
+    keyPitch tinyint,
+    loudness double,
+    mode tinyint,
+    speechiness double,
+    accousticness double,
+    instrumentalness double,
+    liveness double,
+    valence double,
+    tempo double,
+    duration int
+);
+
+create table lecture18_spotifyoriginal1(
+	track_id varchar(30),
+    track_name varchar(100),
+    track_artist varchar(100), 
+    track_popularity tinyint,
+    track_album_id varchar(30),
+    track_album_name varchar(100),
+    track_album_release_date text     
+);
+
+create table lecture18_spotifyoriginal2(
+     playlist_name varchar(50),
+     playlist_id varchar(30),
+     playlist_genre varchar(30),
+     playlist_subgenre varchar(30)     
+);
+
+INSERT INTO lecture18_spotifyoriginal1(track_id, track_name, track_artist, track_popularity, track_album_id, track_album_name, track_album_release_date)
+(SELECT track_id, track_name, track_artist, track_popularity, track_album_id, track_album_name, track_album_release_date
+    from lecture18_spotifyoriginal);
+    
+INSERT INTO lecture18_spotifyoriginal2(playlist_name, playlist_id, playlist_genre, playlist_subgenre)
+(
+	SELECT playlist_name, playlist_id, playlist_genre, playlist_subgenre
+    FROM lecture18_spotifyoriginal
+);   
+
+create table lecture18_spotifyoriginal3(
+	 track_id varchar(30),
+     playlist_id varchar(30),
+     playlist_subgenre varchar(30)     
+);
+
+INSERT INTO lecture18_spotifyoriginal3(track_id, playlist_id, playlist_subgenre)
+(
+	SELECT track_id, playlist_id, playlist_subgenre
+    FROM lecture18_spotifyoriginal
+);
+
+
+ 
